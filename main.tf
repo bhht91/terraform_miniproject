@@ -49,3 +49,8 @@ resource "aws_network_interface_sg_attachment" "sg_attachment" {
   security_group_id    = aws_security_group.dynamic-sg.id
   network_interface_id = aws_instance.ec2-2.primary_network_interface_id
 }
+
+resource "aws_eip_association" "my_eip-to_ec2" {
+  instance_id   = aws_instance.ec2-2.id
+  allocation_id = aws_eip.my_eip.id
+}
